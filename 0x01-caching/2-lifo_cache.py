@@ -22,15 +22,15 @@ class LIFOCache(BaseCaching):
         """Add new item into cache
         """
 
-        if not(key and item):
+        if not (key and item):
             return
-        
-        
+
         if len(self.cache_data) + 1 > self.MAX_ITEMS:
             k = self.cache_data.popitem()[0]
             print("DISCARD: {}".format(k))
-        
+
         self.cache_data[key] = item
+
     def get(self, key):
         """Return the value in self.cache_data linked to key
         """
