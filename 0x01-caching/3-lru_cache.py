@@ -41,6 +41,8 @@ class LRUCache(BaseCaching):
             print("DISCARD: {}".format(k))
 
     def get(self, key):
+        """ Return the value of the key in self.cache_data
+        """
         if key in self.cache_data:
             self.access_order.remove(key)
             self.access_order.append(key)
