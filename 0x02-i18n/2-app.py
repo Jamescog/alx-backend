@@ -2,7 +2,7 @@
 """1-Basic Babel Setup"""
 
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
@@ -28,6 +28,17 @@ babel = Babel(app)
 # Configure the app with the Config class
 app.config.from_object(Config)
 
+# create a get_locale function that uses request.accept_languages
+# and returns the best match with our supported languages
+
+
+@babel.localeselector
+def get_locale():
+    """returns the best match with our supported languages
+    """
+
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
+
 
 # Create a route for the index page
 # that renders the index.html template
@@ -36,7 +47,7 @@ def index():
     """renders index.html
     """
 
-    return render_template("1-index.html")
+    return render_template("2-index.html")
 
 
 # Run the app only if this file is called directly
