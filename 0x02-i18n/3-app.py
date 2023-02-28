@@ -31,7 +31,6 @@ app.config.from_object(Config)
 
 # create a get_locale function that uses request.accept_languages
 # and returns the best match with our supported languages
-#@babel.localeselector
 def get_locale():
     """returns the best match with our supported languages
     """
